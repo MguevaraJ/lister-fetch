@@ -12,27 +12,27 @@
         crossorigin="anonymous">
 </head>
 
-<body>
-    <form action = "../js/index.js" id = "formElement">
-        <div class="container p-3" id="container_form">
-            <hgroup>
-                <h1 class = "text-center text-light display-1">Games</h1>
-            </hgroup>
-            <div class="row">
+<body class = "gradient">
+    <form action="../js/index.js" id="formElement">
+        <div class="container-fluid p-3 fixed-top gradient" id="container_form">
+            <div class="row justify-content-end">
                 <div class="col-auto">
-                    <input type="text" name = "name" class="form-control" placeholder="Name">
+                    <a href="/"></a>
                 </div>
                 <div class="col-auto">
-                    <input type="text" name = "company" class="form-control" placeholder="Company">
+                    <input type="text" name="name" class="form-control" placeholder="Name">
                 </div>
                 <div class="col-auto">
-                    <input type="text" name = "year" class="form-control" placeholder="Year">
+                    <input type="text" name="company" class="form-control" placeholder="Company">
                 </div>
                 <div class="col-auto">
-                    <input type="text" name = "gender" class="form-control" placeholder="Gender">
+                    <input type="text" name="year" class="form-control" placeholder="Year">
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-light" id = "btn_submit">Add Game</button>
+                    <input type="text" name="gender" class="form-control" placeholder="Gender">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-light" id="btn_submit">Add Game</button>
                 </div>
             </div>
         </div>
@@ -51,7 +51,10 @@
             </tbody>
         </table>
     </div>
-
+    <footer class = "text-center gradient">
+        <p class = "h1 text-light">Lister</p>
+        <small class = "text-light pb-2">Create by Moisés Guevara &copy;</small>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

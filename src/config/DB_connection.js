@@ -6,16 +6,16 @@ const pool = mysql.createPool({
     "host": "localhost",
     "user": "Mguevara",
     "password": "Crz+$%S14",
-    "database": "Lister",
-    "debug": "debug"
+    "database": "Lister"
+    // "debug": "debug"
 });
 
 pool.getConnection((err, connect) => {
     if (err) console.log("MYSQL: ERROR_CONNECTION");
     else console.log("MYSQL: SUCCESSFULLY_CONNECTION");
-         connect.query = promisify(connect.query);
     return;
 });
 
+pool.query = promisify(pool.query);
 
 module.exports = pool;

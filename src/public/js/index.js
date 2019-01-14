@@ -32,17 +32,34 @@ async function fetch_req(newGame) {
     let dataFetch = {
         "method": "POST",
         "headers": {
-            "Accept":"application/json",
-            "Content-Type":"application/json"
+            "Accept": "application/json",
+            "Content-Type": "application/json"
         },
         "body": JSON.stringify(newGame)
     };
 
     let data = await fetch(url, dataFetch);
+    form();
 }
 
 window.addEventListener("load", form);
 
-function form() {
-    
+async function form() {
+    const data = await fetch("/games");
+    let process = data.json();
+    process.then(data => {
+        tableList.innerHTML = "";
+        for (let i of data) {
+            tableList.innerHTML += `
+            <tr>
+                <td>${ i.vg_ID }</td>
+                <td>${ i.vg_name }</td>
+                <td>${ i.vg_company }</td>
+                <td>${ i.vg_year }</td>
+                <td>${ i.vg_gender }</td>
+                <td>${ i.vg_create }</td>
+            <tr>`
+        }
+    });
+
 }

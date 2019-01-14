@@ -5,12 +5,20 @@ const connection = require("../config/DB_connection.js");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.type("text/html");
+    res.status(200);
+    res.contentType("text/html");
     res.sendFile(path.join(__dirname, "../public/html/index.html"));
 });
 
-router.post("/", async (req, res) => {
+router.get("/games", async (req, res) => {
 
+    const games = await connection.query("SELECT * FROM Videogames");
+    res.status(200);
+    res.contentType("application/json");
+    res.json(games);
+});
+
+router.post("/", async (req, res) => {
     try {
 
         const { vg_name, vg_company, vg_year, vg_gender } = req.body;
@@ -23,11 +31,11 @@ router.post("/", async (req, res) => {
         };
 
         await connection.query("INSERT INTO videogames SET ?", [resGame]);
-
         res.status(200);
-        res.send("POST: Data sended successfully");
+        res.send(colors.green("POST: Data sended successfully"));
     } catch (err) {
-        console.log("POST:", err);
+        res.status(400);
+        console.log(colors.red("POST:", err));
     }
 });
 
