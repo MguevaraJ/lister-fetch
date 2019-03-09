@@ -1,5 +1,7 @@
 const button_sbt = document.getElementById("btn_submit");
 const formElement = document.getElementById("formElement");
+const tableList = document.getElementById("table-list");
+const bDelete = document.getElementsByClassName("b-delete");
 
 button_sbt.addEventListener("click", post);
 
@@ -24,9 +26,7 @@ function post(e) {
 
 async function fetch_req(newGame) {
 
-    // console.log(newGame);
-
-    let url = "/";
+    let url = "/api/games/insert";
 
     let dataFetch = {
         "method": "POST",
@@ -41,23 +41,34 @@ async function fetch_req(newGame) {
     form();
 }
 
-// window.addEventListener("load", form);
+window.addEventListener("load", form);
 
-// async function form() {
-//     const data = await fetch("/games");
-//     let process = data.json();
-//     process.then(data => {
-//         tableList.innerHTML = "";
-//         for (let i of data) {
-//             tableList.innerHTML += `
-//             <tr>
-//                 <td>${ i.vg_ID}</td>
-//                 <td>${ i.vg_name}</td>
-//                 <td>${ i.vg_company}</td>
-//                 <td>${ i.vg_year}</td>
-//                 <td>${ i.vg_gender}</td>
-//                 <td>${ i.vg_create}</td>
-//             <tr>`
-//         }
-//     });
-// }
+async function form() {
+    const url = "/api/games";
+    const data = await fetch(url);
+    let games = data.json();
+    await games.then(data => {
+        tableList.innerHTML = " ";
+        for (let i of data) {
+            tableList.innerHTML += `
+            <tr id="${i.vg_ID}">
+                <td>${i.vg_ID}</td>
+                <td>${i.vg_name}</td>
+                <td>${i.vg_company}</td>
+                <td>${i.vg_year}</td>
+                <td>${i.vg_gender}</td>
+                <td>${i.vg_create}</td>
+                <td><button class="b-delete">X</button></td>
+            <tr>`  
+        }
+    });
+    for(let i of bDelete) {
+        i.addEventListener("click", async e => {
+            const td = e.target.parentElement.parentElement;
+            const id = td.getAttribute("id");
+            const url = "/api/games/delete/" + id;
+            await fetch(url);
+            form();
+        });
+    }
+}

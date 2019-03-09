@@ -16,8 +16,8 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 
 //routes
-app.use(require("./routes/routes.js"));
+app.use("/api/games",require("./routes/routes.js"));
 
 app.listen(app.get('port'), () => {
-    console.log(colors.green("server on port \'" + app.get('port') + "\'")); 
+    console.log(" SERVER ".black.bgGreen + colors.green(": Listen on port \'" + app.get('port') + "\'")); 
 });

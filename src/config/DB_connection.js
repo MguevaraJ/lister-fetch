@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+const colors = require("colors");
 const { promisify } = require("util");
 
 const pool = mysql.createPool({
@@ -11,8 +12,8 @@ const pool = mysql.createPool({
 });
 
 pool.getConnection((err, connect) => {
-    if (err) console.log("MYSQL: ERROR_CONNECTION");
-    else console.log("MYSQL: SUCCESSFULLY_CONNECTION");
+    if (err) console.log(" MYSQL ".black.bgRed + ": ERROR_CONNECTION".red);
+    else console.log("  MYSQL ".black.bgGreen + ": SUCCESSFULLY_CONNECTION".green);
     return;
 });
 
