@@ -34,9 +34,11 @@ router.post("/update/:id", async (req, res) => {
    try {
         await connection.query("UPDATE videogames SET ? WHERE vg_id=?",[req.body,req.params.id]);
         res.status(200);
+        res.end();
         console.log(colors.green("POST: Data recived successfully"));
    }catch(err) {
         res.status(400);
+        res.end();
         console.log(colors.red("POST:", err));
    }
 });
@@ -45,9 +47,11 @@ router.post("/insert", async (req,res) => {
     try {
         await connection.query("INSERT INTO videogames SET ?", [req.body]);
         res.status(200);
+        res.end();
         console.log(colors.green("POST: Data recived successfully"));
     } catch (err) {
         res.status(400);
+        res.end();
         console.log(colors.red("POST:", err));
     }
 });

@@ -49,27 +49,23 @@
     // let gived = form_data.get(to);
     // let content = { gived };
     // obj_clicked.innerHTML = gived;
+// }
 
-async function call_req() {
-    
-    url = "/api/games/update/1";
+import { drawList } from "./drawList";
+// import { FetchServices } from "./fetchServices";
+
+// const fetchServices = new FetchServices();
+
+export async function editGames() {
 
     const newVideogame = {
-        "vg_name":"MoonWalker",
-        "vg_company":"Nintendo",
-        "vg_year":"1995",
-        "vg_gender":"Platform",
+        "vg_name": "New Super Mario Bros WiiU",
+        "vg_company": "Nintendo",
+        "vg_year": "2006",
+        "vg_gender": "Platform",
     }
 
-    let dataFetch = {
-        "method": "POST",
-        "headers": {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify(newVideogame)
-    };
-
-    let data = await fetch(url,dataFetch);
+    // let response = await fetchServices.req("/api/games/update/17","POST","application/json",
+    // newVideogame);
+    drawList();
 }
-// }
