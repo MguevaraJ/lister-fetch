@@ -1,8 +1,8 @@
-const mysql = require("mysql");
-const colors = require("colors");
-const { promisify } = require("util");
+import { createPool } from "mysql";
+import { black, red, green, bgGreen, bgRed } from "colors";
+import { promisify } from "util";
 
-const pool = mysql.createPool({
+const pool = createPool({
     "connetionLimit": "15",
     "host": "localhost",
     "user": "Mguevara",

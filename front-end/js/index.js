@@ -1,16 +1,14 @@
 const buttonSubmit = document.getElementById("btn_submit");
 const insertForm = document.getElementById("formElement");
 
-require("babel-polyfill");
-
-import { drawList } from "./drawList.js";
-import { editGames } from "./editGames.js";
-import { insertGame } from "./insertGames.js";
+import { GameService } from "./GameService";
 import "../css/master.css";
-import "../css/bs/bootstrap.min.css";
+import "../css/bootstrap.min.css";
+
+const gameService = new GameService();
 
 buttonSubmit.addEventListener("click", submitForm);
-window.addEventListener("load", drawList);
+window.addEventListener("DOMContentLoaded", () => gameService.drawList());
 
 function submitForm(e) {
     e.preventDefault();
@@ -25,5 +23,5 @@ function submitForm(e) {
     };
 
     insertForm.reset();
-    insertGame(newGame);
+    gameService.insertGame(newGame);
 }

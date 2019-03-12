@@ -1,12 +1,12 @@
-const express = require('express');
-const colors = require('colors');
-const connection = require("../config/DB_connection.js");
+import express from "express";
+import { green, red } from "colors";
+import pool from "../config/DB_connection.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
 
     try {
-        const games = await connection.query("SELECT * FROM Videogames");
+        const games = await pool.query("SELECT * FROM Videogames");
         res.status(200);
         res.contentType("application/json");
         res.json(games);
@@ -16,10 +16,10 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
 
     try {
-        await connection.query("DELETE FROM videogames WHERE vg_id=?",[req.params.id]);
+        await pool.query("DELETE FROM videogames WHERE vg_id=?",[req.params.id]);
         res.status(200);
         res.contentType("application/json");
         res.json({"delete":"true"});
@@ -32,27 +32,27 @@ router.get("/delete/:id", async (req, res) => {
 
 router.post("/update/:id", async (req, res) => {
    try {
-        await connection.query("UPDATE videogames SET ? WHERE vg_id=?",[req.body,req.params.id]);
+        await pool.query("UPDATE videogames SET ? WHERE vg_id=?",[req.body,req.params.id]);
         res.status(200);
         res.end();
-        console.log(colors.green("POST: Data recived successfully"));
+        console.log(green("POST: Data recived successfully"));
    }catch(err) {
         res.status(400);
         res.end();
-        console.log(colors.red("POST:", err));
+        console.log(red("POST:", err));
    }
 });
 
 router.post("/insert", async (req,res) => {
     try {
-        await connection.query("INSERT INTO videogames SET ?", [req.body]);
+        await pool.query("INSERT INTO videogames SET ?", [req.body]);
         res.status(200);
         res.end();
-        console.log(colors.green("POST: Data recived successfully"));
+        console.log(green("POST: Data recived successfully"));
     } catch (err) {
         res.status(400);
         res.end();
-        console.log(colors.red("POST:", err));
+        console.log(red("POST:", err));
     }
 });
 

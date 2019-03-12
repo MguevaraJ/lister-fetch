@@ -3,7 +3,12 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: "./front-end/js/index.js",
+    entry: {
+        app: [
+            "babel-polyfill",
+            "./front-end/js/index.js"
+        ]
+    },
     output: {
         path: path.join(__dirname,"src/public"),
         filename: "bundle.js"
