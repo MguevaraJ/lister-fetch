@@ -2,7 +2,10 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const MODE = process.env.NODE_ENV == "development"; 
+
 module.exports = {
+    mode: process.env.NODE_ENV,
     entry: {
         app: [
             "babel-polyfill",
@@ -20,12 +23,22 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: miniCssExtractPlugin.loader,
+                        loader: MODE ? "style-loader" : miniCssExtractPlugin.loader,
                     },
                     {
                         loader: "css-loader"
                     }
                 ]
+            },
+            {   
+                enforce: "pre",
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: "eslint-loader"
+                    }
+                ],
+                exclude: /node_modules/
             },
             {
                 test: /\.js$/,
