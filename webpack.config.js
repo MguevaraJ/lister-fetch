@@ -2,19 +2,19 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const MODE = process.env.NODE_ENV == "development"; 
+const MODE = process.env.NODE_ENV == "development";
 
 module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
         app: [
             "babel-polyfill",
-            "./front-end/js/index.js"
+            "./src/app/js/index.js"
         ]
     },
     output: {
         path: path.join(__dirname,"src/public"),
-        filename: "bundle.js"
+        filename: "js/bundle.js"
     },
 
     module: {
@@ -30,15 +30,18 @@ module.exports = {
                     }
                 ]
             },
-            {   
+            {
                 enforce: "pre",
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: [
                     {
-                        loader: "eslint-loader"
+                        loader: "eslint-loader",
+                        options: {
+                            fix: false
+                        }
                     }
-                ],
-                exclude: /node_modules/
+                ]
             },
             {
                 test: /\.js$/,
@@ -54,11 +57,11 @@ module.exports = {
 
     plugins: [
         new htmlWebpackPlugin({
-            template: "./front-end/index.html"
+            template: "./src/app/index.html"
         }),
 
         new miniCssExtractPlugin({
-            filename: "bundle.css"
+            filename: "css/bundle.css"
         })
     ]
 }
