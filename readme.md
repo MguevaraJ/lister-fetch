@@ -1,7 +1,7 @@
 <h1 align="center">📜 Lister</h1>
 <h4 align="center">An application in which you can list your favorite videogames.</h4>
 
-![ScreenLister](https://user-images.githubusercontent.com/46603674/59169732-7119e600-8b09-11e9-9d31-ab1c0a4bbfcb.png)
+![pagetr](https://user-images.githubusercontent.com/46603674/59171248-19cb4400-8b10-11e9-875e-9c5412ccecc7.png)
 
 ## Getting Started
 
