@@ -38,6 +38,10 @@ You can run the application in two states:
 $ npm run watch:dev
 ```
 - Production
+
+```
+$ npm run build
+```
 ```
 $ npm run start
 ```
