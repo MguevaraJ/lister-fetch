@@ -39,7 +39,7 @@ $ npm run watch:dev
 ```
 - Production
 ```
-$ npm run start:prod
+$ npm run start
 ```
 
 ## Pre-requirements
