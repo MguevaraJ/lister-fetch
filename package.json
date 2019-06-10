@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=\"production\" babel-node src/index.js",
+    "start": "concurrently \"npm run prod:webpack\" \"npm start:prod\"",
     "prod:webpack": "cross-env NODE_ENV=\"production\" webpack",
-    "start:prod": "concurrently \"npm start\" \"npm run prod:webpack\"",
+    "start:prod": "cross-env NODE_ENV=\"production\" babel-node src/index.js",
     "watch:node": "cross-env NODE_ENV=\"development\" nodemon src/index.js",
     "watch:webpack": "cross-env NODE_ENV=\"development\" webpack -w",
     "watch:dev": "concurrently \"npm run watch:node\" \"npm run watch:webpack\""
