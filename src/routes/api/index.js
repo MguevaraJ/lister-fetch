@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const games = await pool.query('SELECT * FROM Videogames')
+    const games = await pool.query('SELECT * FROM videogames')
     res.status(200)
     res.contentType('application/json')
     res.json(games)

@@ -1,4 +1,6 @@
-import { drawList } from './UI';
+const UI = require("./UI");
 import '../css/master.css';
+import "../image/list.ico";
+import "../image/list.png";
 
-window.addEventListener('DOMContentLoaded', drawList);
+window.addEventListener('DOMContentLoaded', UI.drawList);

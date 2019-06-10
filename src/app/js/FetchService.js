@@ -39,7 +39,7 @@ export class FetchService {
       };
       await fetch(url, fetchConfig);
       return true;
-    } catch {
+    } catch (err) {
       return false;
     }
   }

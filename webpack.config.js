@@ -31,14 +31,14 @@ module.exports = {
                 ]
             },
             {
-                enforce: "pre",
-                test: /\.js$/,
-                exclude: /node_modules/,
+                test: /\.(jpg|png|gif|jpeg|ico)$/,
                 use: [
                     {
-                        loader: "eslint-loader",
+                        loader: "file-loader",
                         options: {
-                            fix: false
+                            name: "[name].[ext]",
+                            outputPath: "image",
+                            useRelativePath: true                        
                         }
                     }
                 ]

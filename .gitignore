@@ -1,4 +1,5 @@
 node_modules
-bootstrap.min.css
 .env
 .vscode
+now.json
+public
