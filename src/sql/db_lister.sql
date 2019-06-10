@@ -2,7 +2,7 @@ CREATE DATABASE Lister;
 
 USE Lister;
 
-CREATE TABLE VideoGames(
+CREATE TABLE videogames(
     vg_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     vg_name VARCHAR(70),
     vg_company VARCHAR(70),
