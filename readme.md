@@ -35,7 +35,7 @@ You can run the application in two states:
 
 - Development
 ```
-$ npm run watch:dev
+$ npm run start:dev
 ```
 - Production
 
