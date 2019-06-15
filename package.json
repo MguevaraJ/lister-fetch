@@ -9,7 +9,7 @@
     "build": "cross-env NODE_ENV=\"production\" concurrently \"rimraf src/public\" \"webpack\"",
     "watch:node": "cross-env NODE_ENV=\"development\" nodemon src/index.js",
     "watch:webpack": "cross-env NODE_ENV=\"development\" webpack -w",
-    "watch:dev": "concurrently \"npm run watch:node\" \"npm run watch:webpack\""
+    "start:dev": "concurrently \"npm run watch:node\" \"npm run watch:webpack\""
   },
   "keywords": [],
   "author": "Moisés Guevara",
