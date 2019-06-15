@@ -31,19 +31,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpg|png|gif|jpeg|ico)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[ext]",
-                            outputPath: "image",
-                            useRelativePath: true                        
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.js$/,
                 use: [
                     {
